@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISSE Academic Hub - Trivia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>ISSE Academic Hub</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="trivia.html" class="active">Trivia</a>
+    </nav>
+
+    <div class="layout-container">
+        <!-- Left Sidebar -->
+        <aside class="left-sidebar">
+            <h3>Useful Links</h3>
+            <ul>
+                <li><a href="https://en.ritsumei.ac.jp/" target="_blank">Ritsumeikan University</a></li>
+                <li><a href="https://www.w3schools.com" target="_blank">W3Schools HTML/CSS</a></li>
+                <li><a href="https://developer.mozilla.org" target="_blank">MDN Web Docs</a></li>
+                <li><a href="https://github.com" target="_blank">GitHub Personal</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content with BMI Trivia Calculator -->
+        <main class="main-content">
+            <h2>Interactive Health Trivia Quiz</h2>
+            <p>Body Mass Index (BMI) is a screening metric used to classify health baselines. Challenge your metrics below!</p>
+            
+            <div class="trivia-box">
+                <label for="height">Enter Height (cm):</label>
+                <input type="number" id="height" placeholder="e.g., 175" step="any">
+
+                <label for="weight">Enter Weight (kg):</label>
+                <input type="number" id="weight" placeholder="e.g., 68" step="any">
+
+                <button id="calcBmiBtn">Check My Status</button>
+
+                <div id="triviaResult" class="result-box"></div>
+            </div>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="right-sidebar">
+            <h3>Contact Me</h3>
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required placeholder="Your Name">
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" required placeholder="Your Email">
+                
+                <label for="message">Message:</label>
+                <textarea id="message" rows="4" required placeholder="Your Message"></textarea>
+                
+                <button type="submit">Submit</button>
+            </form>
+            <p id="formFeedback" class="feedback-msg"></p>
+        </aside>
+    </div>
+
+    <footer>
+        <p>Created on: July 2026 | Connect with me: 
+            <a href="https://github.com" target="_blank">GitHub</a> | 
+            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
