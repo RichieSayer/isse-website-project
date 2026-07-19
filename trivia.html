@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISSE Academic Hub - Trivia</title>
+    <title>Richie's ISSE Hub - Trivia</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <h1>ISSE Academic Hub</h1>
+        <h1>Richie's ISSE Academic Hub</h1>
     </header>
 
     <nav>
@@ -30,19 +30,21 @@
             </ul>
         </aside>
 
-        <!-- Main Content with Binary Trivia Game -->
+        <!-- Main Content with Simple CS Trivia Game -->
         <main class="main-content">
             <h2>Interactive Computer Science Trivia</h2>
-            <p>Computers process data in binary notation using bits (0s and 1s). Test your core architectural conversion skills below!</p>
+            <p>Let's check your foundational baseline understanding of modern tech systems. Click an option below to submit your response!</p>
             
             <div class="trivia-box">
-                <h4 style="margin-bottom: 0.8rem;">Convert this 4-bit Binary String to a Decimal Number:</h4>
-                <p id="binaryQuestion" style="font-size: 1.5rem; font-weight: bold; letter-spacing: 4px; color: #2c3e50; margin-bottom: 1rem;">1011</p>
+                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: #2c3e50;">Question:</h3>
+                <p id="triviaQuestion" style="font-size: 1.15rem; margin-bottom: 1.5rem; color: #4a5568;">
+                    "In computer architecture, a single byte consists of exactly 8 bits."
+                </p>
 
-                <label for="decimalAnswer">Your Answer (Base-10 Integer):</label>
-                <input type="number" id="decimalAnswer" placeholder="e.g., 5" min="0" max="15">
-
-                <button id="checkAnswerBtn">Verify Answer</button>
+                <div class="trivia-btn-container">
+                    <button class="trivia-btn btn-true" data-answer="true">TRUE</button>
+                    <button class="trivia-btn btn-false" data-answer="false">FALSE</button>
+                </div>
 
                 <div id="triviaResult" class="result-box"></div>
             </div>
@@ -50,7 +52,7 @@
 
         <!-- Right Sidebar -->
         <aside class="right-sidebar">
-            <h3>Contact Me</h3>
+            <h3>Contact Richie</h3>
             <form id="contactForm">
                 <label for="name">Name:</label>
                 <input type="text" id="name" required placeholder="Your Name">
