@@ -30,19 +30,22 @@
             </ul>
         </aside>
 
-        <!-- Main Content with Simple CS Trivia -->
+        <!-- Main Content with Interactive Password Game -->
         <main class="main-content">
-            <h2>Interactive Computer Science Trivia</h2>
-            <p>Test your fundamental hardware knowledge with this quick pop quiz!</p>
+            <h2>Interactive Security Trivia Challenge</h2>
+            <p>Welcome to the <strong>Password Cracker Simulator</strong>. A simulated mainframe firewall has locked you out. You must guess the correct 5-letter administrative security phrase to gain access!</p>
             
             <div class="trivia-box">
-                <h4 style="margin-bottom: 0.8rem;">Question:</h4>
-                <p style="font-size: 1.2rem; font-weight: 600; color: #2c3e50; margin-bottom: 1rem;">What does CPU stand for?</p>
+                <h4 style="margin-bottom: 0.5rem; color: #2c3e50;">System Parameters:</h4>
+                <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #555;">
+                    • The password is exactly <strong>5 letters long</strong>.<br>
+                    • Use the real-time matching feedback clues to crack the terminal sequence.
+                </p>
 
-                <label for="triviaAnswer">Your Answer:</label>
-                <input type="text" id="triviaAnswer" placeholder="Type the full technical term">
+                <label for="passwordGuess">Enter 5-Letter Attempt:</label>
+                <input type="text" id="passwordGuess" placeholder="e.g., cyber" maxlength="5" style="text-transform: lowercase;">
 
-                <button id="checkAnswerBtn">Verify Answer</button>
+                <button id="checkAnswerBtn">Execute Exploit Script</button>
 
                 <div id="triviaResult" class="result-box"></div>
             </div>

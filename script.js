@@ -24,32 +24,47 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // --- 2. Trivia Quiz Logic (Simple Text Matching) ---
+    // --- 2. Trivia Quiz Logic (Interactive Password Cracker Engine) ---
     const checkAnswerBtn = document.getElementById("checkAnswerBtn");
     if (checkAnswerBtn) {
+        // The hidden system key target string
+        const secretPassword = "cyber";
+
         checkAnswerBtn.addEventListener("click", function () {
-            const userAnswerInput = document.getElementById("triviaAnswer").value.trim().toLowerCase();
+            const guessInput = document.getElementById("passwordGuess");
+            const userGuess = guessInput.value.trim().toLowerCase();
             const resultBox = document.getElementById("triviaResult");
 
-            if (userAnswerInput === "") {
+            // Input Validation Guard Rail
+            if (userGuess.length !== 5) {
                 resultBox.style.display = "block";
                 resultBox.style.backgroundColor = "#fde8e8";
                 resultBox.style.color = "#e74c3c";
-                resultBox.textContent = "Please enter an answer before verifying.";
+                resultBox.textContent = "Syntax Error: Security overrides require a string of exactly 5 letters.";
                 return;
             }
 
             resultBox.style.display = "block";
 
-            // Accept exact phrase or with standard spacing variations
-            if (userAnswerInput === "central processing unit") {
+            // Instant win validation
+            if (userGuess === secretPassword) {
                 resultBox.style.backgroundColor = "#e8f8f5";
                 resultBox.style.color = "#2ecc71";
-                resultBox.innerHTML = `🎉 <strong>Correct!</strong> Central Processing Unit is the primary hardware brain running instructions on a computer core system.`;
+                resultBox.innerHTML = `🔓 <strong>ACCESS GRANTED!</strong> Excellent work, hacker! You successfully cracked the firewall. The correct security string was indeed <strong>"${secretPassword}"</strong>.`;
+                guessInput.value = ""; // Clear on win
             } else {
-                resultBox.style.backgroundColor = "#fde8e8";
-                resultBox.style.color = "#e74c3c";
-                resultBox.innerHTML = `❌ <strong>Incorrect.</strong> "<em>${userAnswerInput}</em>" isn't quite right. Hint: The letters stand for C______ P_________ U___. Try again!`;
+                // Compute character positional matches
+                let exactMatches = 0;
+                for (let i = 0; i < 5; i++) {
+                    if (userGuess[i] === secretPassword[i]) {
+                        exactMatches++;
+                    }
+                }
+
+                resultBox.style.backgroundColor = "#fff9db";
+                resultBox.style.color = "#d35400";
+                resultBox.innerHTML = `⚡ <strong>BREACH FAILED:</strong> Administrative passcode signature mismatch.<br>
+                                       🔍 <strong>Clue:</strong> Your guess has <strong>${exactMatches} / 5</strong> characters in the correct slot positions. Refine your execution parameters!`;
             }
         });
     }
