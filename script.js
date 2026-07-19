@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (contactForm) {
         contactForm.addEventListener("submit", function (e) {
-            e.preventDefault(); // Stay on page
+            e.preventDefault(); 
 
             const name = document.getElementById("name").value.trim();
             const email = document.getElementById("email").value.trim();
@@ -18,62 +18,45 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // Success feedback message simulation
             formFeedback.style.color = "#2ecc71";
             formFeedback.textContent = `Thank you, ${name}! Your message was successfully captured.`;
-            
-            // Wipe inputs
             contactForm.reset();
         });
     }
 
-    // --- 2. Trivia Quiz Logic (BMI Processing Engine) ---
-    const calcBmiBtn = document.getElementById("calcBmiBtn");
-    if (calcBmiBtn) {
-        calcBmiBtn.addEventListener("click", function () {
-            const heightInput = document.getElementById("height").value;
-            const weightInput = document.getElementById("weight").value;
+    // --- 2. Trivia Quiz Logic (Binary to Decimal Verification) ---
+    const checkAnswerBtn = document.getElementById("checkAnswerBtn");
+    if (checkAnswerBtn) {
+        // Target sequence '1011' equals 11 in Base-10 representation (8 + 0 + 2 + 1)
+        const targetBinaryString = "1011";
+        const correctDecimalValue = parseInt(targetBinaryString, 2);
+
+        checkAnswerBtn.addEventListener("click", function () {
+            const userAnswerInput = document.getElementById("decimalAnswer").value;
             const resultBox = document.getElementById("triviaResult");
 
-            const height = parseFloat(heightInput);
-            const weight = parseFloat(weightInput);
-
-            // Validation Guard Rails
-            if (isNaN(height) || isNaN(weight) || height <= 0 || weight <= 0) {
+            // Check if input is completely empty
+            if (userAnswerInput === "") {
                 resultBox.style.display = "block";
                 resultBox.style.backgroundColor = "#fde8e8";
                 resultBox.style.color = "#e74c3c";
-                resultBox.textContent = "Error: Please provide realistic positive measurements.";
+                resultBox.textContent = "Please enter an integer guess before verifying.";
                 return;
             }
 
-            // Calculation Logic (Height converted: cm -> meters)
-            const heightInMeters = height / 100;
-            const bmi = weight / (heightInMeters * heightInMeters);
-            const score = bmi.toFixed(1);
-            
-            let bracket = "";
-            let hexColor = "";
+            const parsedUserAnswer = parseInt(userAnswerInput, 10);
 
-            if (bmi < 18.5) {
-                bracket = "Underweight";
-                hexColor = "#f39c12"; // Amber yellow
-            } else if (bmi >= 18.5 && bmi < 25) {
-                bracket = "Normal weight";
-                hexColor = "#2ecc71"; // Health green
-            } else if (bmi >= 25 && bmi < 30) {
-                bracket = "Overweight";
-                hexColor = "#d35400"; // Soft orange
-            } else {
-                bracket = "Obese";
-                hexColor = "#c0392b"; // Alert red
-            }
-
-            // Expose values into viewport dynamically
             resultBox.style.display = "block";
-            resultBox.style.backgroundColor = "#eaf2f8";
-            resultBox.style.color = "#2c3e50";
-            resultBox.innerHTML = `Your computed score is <span style="color: ${hexColor}; font-size:1.15rem;">${score}</span>.<br>Classification status: <strong>${bracket}</strong>.`;
+
+            if (parsedUserAnswer === correctDecimalValue) {
+                resultBox.style.backgroundColor = "#e8f8f5";
+                resultBox.style.color = "#2ecc71";
+                resultBox.innerHTML = `🎉 Correct! <strong>${targetBinaryString}</strong> in binary evaluates to <strong>${correctDecimalValue}</strong> ($8 + 0 + 2 + 1$). Great job!`;
+            } else {
+                resultBox.style.backgroundColor = "#fde8e8";
+                resultBox.style.color = "#e74c3c";
+                resultBox.innerHTML = `❌ Incorrect. Your guess of <strong>${parsedUserAnswer}</strong> does not match. Hints: Evaluation weights map to standard base positions ($2^3, 2^2, 2^1, 2^0$). Try again!`;
+            }
         });
     }
 });
